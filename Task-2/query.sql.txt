@@ -1,0 +1,5 @@
+SELECT
+  temperature_category,
+  AVG(temperature) AS average_temperature
+FROM `weather_dataset.weather_data`
+GROUP BY temperature_category;

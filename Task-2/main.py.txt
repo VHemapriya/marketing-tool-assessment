@@ -1,0 +1,64 @@
+import requests
+import pandas as pd
+import logging
+from pandas_gbq import to_gbq
+
+logging.basicConfig(level=logging.INFO)
+
+API_URL = "https://api.open-meteo.com/v1/forecast"
+
+params = {
+    "latitude": 13.0827,
+    "longitude": 80.2707,
+    "current_weather": "true"
+}
+
+try:
+    logging.info("Fetching weather data...")
+
+    response = requests.get(API_URL, params=params)
+
+    response.raise_for_status()
+
+    data = response.json()
+
+    weather = data.get("current_weather", {})
+
+    temperature = weather.get("temperature")
+    windspeed = weather.get("windspeed")
+    time = weather.get("time")
+
+    if temperature is None:
+        raise ValueError("Temperature data missing")
+
+    category = "Hot" if temperature > 35 else "Normal"
+
+    df = pd.DataFrame([{
+        "city": "Chennai",
+        "time": time,
+        "temperature": temperature,
+        "windspeed": windspeed,
+        "temperature_category": category
+    }])
+
+    logging.info("Transformed Data:")
+    print(df)
+
+    df.to_csv("sample_output.csv", index=False)
+
+    project_id = "YOUR_BIGQUERY_PROJECT_ID"
+
+    to_gbq(
+        df,
+        destination_table="weather_dataset.weather_data",
+        project_id=project_id,
+        if_exists="append"
+    )
+
+    logging.info("Data uploaded to BigQuery successfully!")
+
+except requests.exceptions.RequestException as e:
+    logging.error(f"API request failed: {e}")
+
+except Exception as e:
+    logging.error(f"Pipeline failed: {e}")
