@@ -1,0 +1,14 @@
+# Walkthrough Notes
+
+I focused on building a simple internal dashboard that reduces manual reporting work for marketing teams.
+
+My main priority was usability and simplicity instead of adding too many features. Since the company already uses multiple existing tools, I designed the solution to integrate around current workflows instead of replacing them.
+
+For V1, I intentionally excluded advanced AI features and real-time analytics because the main business problem is reporting consistency and time savings.
+
+If given more time, I would explore:
+
+* Automated alerts
+* AI-based recommendations
+* Role-based permissions
+* More advanced visualizations

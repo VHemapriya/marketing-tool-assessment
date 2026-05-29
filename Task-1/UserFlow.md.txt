@@ -1,0 +1,9 @@
+Login
+↓
+Select Client
+↓
+View Dashboard
+↓
+Check Channel Performance
+↓
+View Recommendations
