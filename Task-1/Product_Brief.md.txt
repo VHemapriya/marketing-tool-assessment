@@ -1,0 +1,14 @@
+This tool helps marketing teams quickly check marketing performance across channels like Google Ads and Meta Ads.
+
+Problem:
+Currently the team manually checks many tools and creates reports.
+
+Solution:
+A dashboard that combines marketing data and shows performance in one place.
+
+Primary Users:
+- Internal analysts
+- Marketing managers
+
+Goal:
+Save time and give consistent answers.

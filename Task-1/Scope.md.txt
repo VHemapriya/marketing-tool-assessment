@@ -1,0 +1,13 @@
+Included in V1:
+- Dashboard
+- Channel performance summary
+- Basic recommendations
+- Weekly/monthly reports
+
+Not Included:
+- AI predictions
+- Real-time analytics
+- Advanced permissions
+
+Reason:
+Keeping V1 simple and useful.
